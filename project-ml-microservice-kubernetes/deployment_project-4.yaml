@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: project-4-udacity-learn
+  labels:
+    app: project-4
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: project-4
+  template:
+    metadata:
+      labels:
+        app: project-4
+    spec:
+      containers:
+      - name: project-4-udacity
+        image: 504395544721.dkr.ecr.us-east-1.amazonaws.com/project-4-udacity-learning:latest
+        imagePullPolicy: Always
+        ports:
+          - name: web
+            containerPort: 80
+      imagePullSecrets:
+          - name: regcred
